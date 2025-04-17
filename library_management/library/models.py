@@ -43,4 +43,5 @@ class IssuedBook(models.Model):
     return_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.user.username} issued {self.book.title}"
+        user_display = self.user.username if self.user else "Anonymous"
+        return f"{user_display} issued {self.book.title}"
