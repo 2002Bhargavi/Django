@@ -89,6 +89,7 @@ To install Django , follow these steps:
 
 Contributing 💡
 If you'd like to contribute to Django Library Management, feel free to fork this repository and submit a pull request. For more information on contributing to the project, please check out my repository.
+
 Step 1
 Option 1
 
@@ -96,8 +97,10 @@ Option 1
 Option 2
 
 👯 Clone this repo to your local machine.
+
 Step 2
 Build your code 🔨🔨🔨
+
 Step 3
 🔃 Create a new pull request.
 Creadits :
