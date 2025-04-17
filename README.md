@@ -15,7 +15,7 @@ To install Django project, follow these steps:
   cd library_management
 
 3. Create a virtual environment:
-  python -m venv env
+  python -m venv myenv
 
 4. Activate the virtual environment:
   source env/bin/activate
