@@ -19,20 +19,23 @@ def books_in_category(request, category_id):
         return redirect('category_list')
 
 def issue_book(request, book_id):
-    import pdb;pdb.set_trace()
-    try:
-        book = Book.objects.get(id=book_id)
-        if book.copies_available > 0:
-            user=IssuedBook.objects.create(user=request.user, book=book) if request.user.is_authenticated else IssuedBook.objects.create(book=book)
-            # IssuedBook.objects.create(user=user, book=book)
-            book.copies_available -= 1
-            book.save()
-            messages.success(request, f"You have issued '{book.title}' successfully.")
-        else:
-            messages.error(request, "No copies available to issue this book.")
-    except Book.DoesNotExist:
-        messages.error(request, "Book not found.")
-    return redirect('books_in_category', category_id=book.category.id if 'book' in locals() else None)
+    import pdb; pdb.set_trace()
+    datetime.fromisoformat(request.POST.get('issue_date'))
+    book = get_object_or_404(Book, id=book_id)
+
+    if book.copies_available > 0:
+        issued_book = IssuedBook.objects.create(
+            user=request.user if request.user.is_authenticated else None,
+            book=book
+        )
+        book.copies_available -= 1
+        book.save()
+
+        messages.success(request, f"You have issued '{book.title}' successfully.")
+    else:
+        messages.error(request, "No copies available to issue this book.")
+
+    return redirect('books_in_category', category_id=book.category.id)
 
 
 def add_book(request):
